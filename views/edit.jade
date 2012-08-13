@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h2 Producto
+  
+  form(method='post', path='/producto/' + producto._id.toString() ) Datos del producto
+    fieldset
+      input(name='_id', type='hidden', value=producto._id)
+      label Nombre:
+        input(name='nombre', value=producto.nombre)
+      label Descripción:
+        input(name='descripcion', value=producto.descripcion)
+      label Precio:
+        input(name='precio', value=producto.precio)
+    input(type='submit')
+    
+    
+  
+

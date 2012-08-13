@@ -24,11 +24,38 @@ exports.index = function (req, res, next) {
 }
 
 exports.show_edit = function (req, res, next) {
-  res.send('show_edit')
+  Producto.findById(req.params.id, function(error, prod){
+        if(error) throw error;
+        res.render('edit', { title: "Notes Mongo", postpath: "/note/"+req.params.id, producto:prod });
+        //res.send('show_edit '+  req.params.id + producto.nombre);
+    });  
+  
+  
 }
 
 exports.update = function (req, res, next) {
-  res.send('update')
+  Producto.findById(req.body._id, function(error, prod){
+        if(error) throw error;
+        prod.nombre = req.body.nombre;
+        prod.descripcion = req.body.descripcion;
+        prod.precio = req.body.precio;
+ 
+        prod.save(function(err) {
+          if (err)
+            console.log('error');
+          else {
+            console.log('success');
+            res.redirect('/');
+          }
+        });  
+        
+        
+        //res.render('edit', { title: "Notes Mongo", postpath: "/note/"+req.params.id, producto:prod });
+        //res.send('show_edit '+  req.params.id + producto.nombre);
+    });
+
+  
+  //res.send('update' +  req.body._id +'*' + req.body.nombre);
 }
 
 exports.remove = function (req, res, next) {

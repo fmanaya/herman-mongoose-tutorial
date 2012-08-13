@@ -2,8 +2,9 @@
     "name": "herman-mongoose-suggestion"
   , "version": "1.0.0"
   , "dependencies": {
-      "express"     : "2.5.8"
-    , "jade"        : "0.25.x"
-    , "mongoose"    : "2.5.10"
+      "express"     : "3.0.x"
+    , "jade"        : "0.27.x"
+    , "stylus": "*"    
+    , "mongoose"    : "3.0.0"   
   }
 }

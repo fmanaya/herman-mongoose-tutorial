@@ -66,6 +66,12 @@ Comprobemos si nuestro producto se guardó:
 ````
 Ese campo _id es nativo de mongoDB.
 
+Añadimos mas registros
+>db.productos.insert({ nombre: 'Super 8', descripcion: 'Barra de Chocolate', precio: 3.50 })
+>db.productos.insert({ nombre: 'Papas Fritas', descripcion: 'Crujientes del Mediterraneo', precio: 4.50 })
+>db.productos.insert({ nombre: 'Coca Cola', descripcion: 'Agua Carbonatada con Azucar', precio:  2.80 })
+
+
 ## Rutas Web de la Aplicación
 
 Ahora que ya tenemos un objeto, y un documento que lo describe, es hora de diseñar rápidamente las rutas que queremos para operar en nuestra aplicación web. Empezemos por los conceptos: "Con mi aplicación web, yo a los productos quiero:"

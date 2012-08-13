@@ -6,7 +6,8 @@
 var express   = require('express')
 var producto  = require('./controllers/producto')
 
-var app = module.exports = express.createServer();
+
+var app = express();
 
 // Configuration
 
@@ -16,6 +17,7 @@ app.configure(function(){
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(app.router);
+  app.use(require('stylus').middleware(__dirname + '/public'));  
   app.use(express.static(__dirname + '/public'));
 });
 
@@ -30,6 +32,16 @@ app.configure('production', function(){
 // Routes
 app.get('/', producto.index)
 
+
+/*
+app.get('/note/:id/edit', function(req, res){
+    notesdb.findNoteById(req.params.id, function(error, note){
+        if(error) throw error;
+        res.render('edit.html', { title: "Notes Mongo", postpath: "/note/"+req.params.id, note:note });
+    });
+});
+*/
+
 app.get('/producto/:id', producto.show_edit)
 
 app.post('/producto/:id', producto.update)
@@ -40,5 +52,5 @@ app.get('/nuevo-producto', producto.create)
 
 
 app.listen(3000, function(){
-  console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+  //console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 });
